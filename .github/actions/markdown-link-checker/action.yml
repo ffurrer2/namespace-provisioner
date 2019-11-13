@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: MIT
+name: 'markdown-link-checker'
+description: 'Action to ensure that internal and external Markdown links are valid and alive.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

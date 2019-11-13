@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: MIT
+
+name: Static analysis
+
+on:
+  push:
+    branches:
+    - poc/*
+
+jobs:
+#  golangci-lint:
+#    name: golangci-lint
+#    strategy:
+#      matrix:
+#        os: [ubuntu-18.04]
+#        go: [1.13]
+#    runs-on: ${{ matrix.os }}
+#    steps:
+#    - name: Checkout
+#      uses: actions/checkout@v1
+#    - name: Run action
+#      uses: ./.github/actions/golangci-lint
+#    - name: Run action
+#      uses: ./.github/actions/link-checker
+  link-checker:
+    name: golangci-lint
+    strategy:
+      matrix:
+        os: [ubuntu-18.04]
+        go: [1.13]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Run action
+      uses: ./.github/actions/markdown-link-checker

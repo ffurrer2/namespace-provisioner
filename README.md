@@ -216,7 +216,7 @@ task docker:test
 
 ### Local build
 
-To build and test the operator on your local OS you need [Task](https://taskfile.dev/#/) (&geq; 2.7.0) and [Go](https://golang.org/) (&geq; 1.11).
+To build and test the operator on your local OS you need [Task](https://taskfile.dev/#/) (&geq; 2.7.0) and [Go](https://golang.orgg/) (&geq; 1.11).
 
 ```bash
 # Build Go binary
