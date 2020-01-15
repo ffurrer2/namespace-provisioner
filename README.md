@@ -4,6 +4,7 @@
 
 [![CI](https://github.com/Daimler/namespace-provisioner/workflows/CI/badge.svg)](https://github.com/Daimler/namespace-provisioner)
 [![CI Windows](https://github.com/Daimler/namespace-provisioner/workflows/CI%20Windows/badge.svg)](https://github.com/Daimler/namespace-provisioner)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ffurrer2/namespace-provisioner)](https://goreportcard.com/report/github.com/ffurrer2/namespace-provisioner)
 
 The **Namespace Provisioner** is a Kubernetes Operator that facilitates the management of multiple namespaces on kubernetes clusters.
 You can simply annotate a Kubernetes namespace and non-application specific resources like `ImagePullSecrets`, `NetworkPolicies`, `Roles` or `RoleBindings` are automatically deployed to prepare the namespace for application deployment and testing.

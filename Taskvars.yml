@@ -11,5 +11,5 @@ vars:
   GO_BUILD_ENV: GOOS=linux GOARCH=amd64 CGO_ENABLED=0
   IMAGE_NAME: '{{.PROJECT_NAME}}'
   DOCKER_REGISTRY: '{{lower (default "docker.pkg.github.com/Daimler/namespace-provisioner" .DOCKER_REGISTRY)}}'
-  CONTEXT_2_DEPLOY: minikube
-  NAMESPACE_2_DEPLOY: default
+  KUBE_CONTEXT: minikube
+  NAMESPACE: default

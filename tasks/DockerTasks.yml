@@ -8,7 +8,7 @@ vars:
 
 tasks:
   build:
-    desc: Multi-stage build compile in docker and create the image with default tags
+    desc: Multi-stage build compile in Docker and create the image with default tags
     vars:
       BUILD_ARGS: '--build-arg BUILD_DATE={{.BUILD_DATE}} --build-arg BUILD_VERSION={{.BUILD_VERSION}} --build-arg VCS_REF={{.VCS_REF}} {{.PROXY_ARGS}}'
     cmds:
@@ -37,7 +37,7 @@ tasks:
       docker rm -v $id
 
   tag:
-    desc: Tag docker images
+    desc: Tag Docker images
     cmds:
     - docker tag {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION}} {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION_SHORT}}
     - docker tag {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION}} {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:latest

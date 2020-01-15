@@ -16,14 +16,17 @@ tasks:
 
   build:
     desc: Build component
-    cmds:
+    deps:
     - task: prepare
-    - '{{.GO_BUILD_ENV}} go build -o build/bin/namespace-provisioner -mod=readonly -v'
+    cmds:
+    - |-
+      {{.GO_BUILD_ENV}} go build -o build/bin/namespace-provisioner -mod=readonly -v
 
   test:
     desc: Test component
-    cmds:
+    deps:
     - task: prepare
+    cmds:
     - mkdir -p build/coverage-results
     - mkdir -p build/test-results
     - TEST_RESULT_DIR=../../build/test-results go test -mod=readonly -coverprofile=build/coverage-results/coverage.out -covermode count -v ./...
@@ -33,6 +36,12 @@ tasks:
     desc: Tidy go.mod
     cmds:
     - go mod tidy -v
+
+  show-dependency-updates:
+    desc: Show dependency updates
+    cmds:
+    - |-
+      go list -u -f {{` '{{if (and (not (or .Main .Indirect)) .Update)}}{{.Path}}: {{.Version}} -> {{.Update.Version}}{{end}}' `}} -m all 2> /dev/null
 
   update-dependencies:
     desc: Update dependencies
