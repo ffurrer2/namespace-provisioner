@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: MIT
-
 name: Release
 
 on:
@@ -10,25 +9,27 @@ on:
 jobs:
   release-build:
     runs-on: ubuntu-18.04
-    env:
-      DOCKER_REGISTRY: docker.pkg.github.com/${{github.repository}}
     steps:
     - name: Set up task
       env:
-        TASK_VERSION: 2.7.1
+        TASK_VERSION: 2.8.0
       run: |
-        sudo bash -c "curl -sLSf https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${TASK_VERSION}"
+        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${TASK_VERSION}"
+    - name: Set up environment variables
+      run: |
+        echo "::set-env name=DOCKER_REGISTRY::$(echo -n 'docker.pkg.github.com/${{github.repository}}' | tr '[:upper:]' '[:lower:]')"
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Build
       run: |
-        DOCKER_REGISTRY="${DOCKER_REGISTRY}" task docker:build
+        task docker:build DOCKER_REGISTRY="${DOCKER_REGISTRY}"
     - name: Test
       run: |
         task docker:test
     - name: Push image
       run: |
-        DOCKER_REGISTRY="${DOCKER_REGISTRY}" task docker:push-release DOCKER_USERNAME=anonymous DOCKER_PASSWORD=${{secrets.GITHUB_TOKEN}}
+        task docker:login DOCKER_USERNAME=anonymous DOCKER_PASSWORD="${{secrets.GITHUB_TOKEN}}"
+        task docker:push-release DOCKER_REGISTRY="${DOCKER_REGISTRY}"
     - name: Create release
       uses: actions/create-release@v1
       env:

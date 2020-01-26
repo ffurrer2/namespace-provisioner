@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: MIT
-
 name: CI
 
 on:
@@ -18,11 +17,11 @@ jobs:
     steps:
     - name: Set up task
       env:
-        TASK_VERSION: 2.7.1
+        TASK_VERSION: 2.8.0
       run: |
-        sudo bash -c "curl -sLSf https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${TASK_VERSION}"
+        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${TASK_VERSION}"
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Build
       run: |
         task docker:build
@@ -44,11 +43,11 @@ jobs:
         go-version: ${{ matrix.go }}
     - name: Set up task
       env:
-        TASK_VERSION: 2.7.1
+        TASK_VERSION: 2.8.0
       run: |
-        sudo bash -c "curl -sLSf https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${TASK_VERSION}"
+        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${TASK_VERSION}"
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Clean
       run: |
         task local:clean

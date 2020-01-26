@@ -1,21 +1,17 @@
 # SPDX-License-Identifier: MIT
 
-# Conventions:
-# WORKDIR = /workdir
-# Build and test results should be in /workdir/build
-
 ###############################################################################
 # SET UP BUILD-ENV
 ###############################################################################
 FROM golang:1.13 as build-env
 
-ARG TASK_VERSION=2.7.1
+ARG TASK_VERSION=2.8.0
 
 # Install Task
 WORKDIR /tmp
-RUN curl -sLSfo task.tgz https://github.com/go-task/task/releases/download/v${TASK_VERSION}/task_linux_amd64.tar.gz && \
+RUN curl -fsSLo task_linux_amd64.tgz https://github.com/go-task/task/releases/download/v${TASK_VERSION}/task_linux_amd64.tar.gz && \
     mkdir -p task && \
-    tar xvf task.tgz -C task && \
+    tar xvf task_linux_amd64.tgz -C task && \
     mv task/task /usr/local/bin/ && \
     rm -rf task*
 
@@ -41,7 +37,7 @@ RUN task build GO_BUILD_ENV="${GO_BUILD_ENV}"
 # TEST
 ###############################################################################
 FROM build as test
-ARG BUILD_DATE
+
 RUN task test
 
 ###############################################################################

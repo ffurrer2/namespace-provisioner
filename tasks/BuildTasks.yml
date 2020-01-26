@@ -30,7 +30,7 @@ tasks:
     - mkdir -p build/coverage-results
     - mkdir -p build/test-results
     - TEST_RESULT_DIR=../../build/test-results go test -mod=readonly -coverprofile=build/coverage-results/coverage.out -covermode count -v ./...
-    - go tool cover -html=build/coverage-results/coverage.out -o build/coverage-results/coverage.html
+    - go tool cover -html build/coverage-results/coverage.out -o build/coverage-results/coverage.html
 
   tidy:
     desc: Tidy go.mod

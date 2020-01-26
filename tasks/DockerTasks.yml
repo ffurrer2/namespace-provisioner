@@ -10,7 +10,7 @@ tasks:
   build:
     desc: Multi-stage build compile in Docker and create the image with default tags
     vars:
-      BUILD_ARGS: '--build-arg BUILD_DATE={{.BUILD_DATE}} --build-arg BUILD_VERSION={{.BUILD_VERSION}} --build-arg VCS_REF={{.VCS_REF}} {{.PROXY_ARGS}}'
+      BUILD_ARGS: '--build-arg BUILD_DATE={{.BUILD_DATE}} --build-arg VCS_REF={{.VCS_REF}} --build-arg BUILD_VERSION={{.BUILD_VERSION}} {{.PROXY_ARGS}}'
     cmds:
     - '{{.DOCKER_BUILDKIT }} docker build --pull --tag {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION}} --no-cache={{.NO_CACHE}} {{.BUILD_ARGS}} .'
     - task: tag
@@ -23,7 +23,7 @@ tasks:
   test:
     desc: Multi-stage run tests and copy build directory to local machine
     vars:
-      BUILD_ARGS: '--build-arg BUILD_DATE={{.BUILD_DATE}} --build-arg BUILD_VERSION={{.BUILD_VERSION}} --build-arg VCS_REF={{.VCS_REF}} {{.PROXY_ARGS}}'
+      BUILD_ARGS: '--build-arg BUILD_DATE={{.BUILD_DATE}} --build-arg VCS_REF={{.VCS_REF}} --build-arg BUILD_VERSION={{.BUILD_VERSION}} {{.PROXY_ARGS}}'
     cmds:
     - '{{.DOCKER_BUILDKIT}} docker build --pull --progress=plain --target test --tag {{.IMAGE_NAME}}-test:{{.VCS_REF}} {{.BUILD_ARGS}} .'
     - |-
@@ -42,8 +42,17 @@ tasks:
     - docker tag {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION}} {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION_SHORT}}
     - docker tag {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION}} {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:latest
 
+  login:
+    desc: Login into docker.pkg.github.com registry
+    preconditions:
+    - sh: 'test -n "$DOCKER_USERNAME"'
+      msg: "Variable DOCKER_USERNAME is required!"
+    - sh: 'test -n "$DOCKER_PASSWORD"'
+      msg: "Variable DOCKER_PASSWORD is required!"
+    cmds:
+    - docker login docker.pkg.github.com --username {{.DOCKER_USERNAME}} --password {{.DOCKER_PASSWORD}}
+
   push-release:
     desc: Push image to {{.DOCKER_REGISTRY}}
     cmds:
-    - docker login docker.pkg.github.com --username {{.DOCKER_USERNAME}} --password {{.DOCKER_PASSWORD}}
     - docker push {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION_SHORT}}

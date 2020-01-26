@@ -10,12 +10,12 @@ tasks:
   deploy-secrets:
     desc: Deploy secrets
     cmds:
-    - |
+    - |-
       kubectl --context={{.KUBE_CONTEXT}} config view --raw --minify=true --flatten=true | \
       sed 's#server:.*#server: https://kubernetes.default.svc#g' > config
-    - |
+    - |-
       kubectl --context={{.KUBE_CONTEXT}} --namespace={{.NAMESPACE}} create secret generic kube-config --from-file=config --dry-run --output=yaml | \
-      kubectl --context={{.KUBE_CONTEXT}} --namespace {{.NAMESPACE}} apply -f -
+      kubectl --context={{.KUBE_CONTEXT}} --namespace={{.NAMESPACE}} apply -f -
     - rm config
 
   deploy-local:
@@ -23,3 +23,8 @@ tasks:
     cmds:
     - kubectl --context={{.KUBE_CONTEXT}} --namespace={{.NAMESPACE}} delete --filename=deploy/namespace-provisioner-{{.KUBE_CONTEXT}}.yaml --ignore-not-found
     - kubectl --context={{.KUBE_CONTEXT}} --namespace={{.NAMESPACE}} apply --filename=deploy/namespace-provisioner-{{.KUBE_CONTEXT}}.yaml
+
+  print-vars:
+    desc: List all task env/vars variables
+    cmds:
+    - echo '{{ . | toPrettyJson }}' | jq .

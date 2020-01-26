@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-* Reduce docker image size
+* Reduce Docker image size
 
 ## [1.0.0] - 2019-09-18
 

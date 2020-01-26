@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: MIT
-
 name: CI Windows
 
 on:
@@ -22,14 +21,14 @@ jobs:
         go-version: 1.13
     - name: Set up task
       env:
-        TASK_VERSION: 2.7.1
+        TASK_VERSION: 2.8.0
       shell: powershell
       run: |
         iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
         scoop bucket add extras
         scoop install task@$env:TASK_VERSION
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Clean
       shell: bash
       run: |
