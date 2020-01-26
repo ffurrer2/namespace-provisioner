@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: MIT
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: namespace-provisioner-deployment
+  labels:
+    app: namespace-provisioner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: namespace-provisioner
+  template:
+    metadata:
+      labels:
+        app: namespace-provisioner
+    spec:
+      containers:
+      - name: namespace-provisioner
+        image: docker.pkg.github.com/ffurrer2/namespace-provisioner/namespace-provisioner:1.2.1-poc-kind
+        imagePullPolicy: Never
+        env:
+        - name: LOG_LEVEL
+          value: DEBUG
+        - name: CONFIG_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: KUBECONFIG
+          value: /.kube/config
+        volumeMounts:
+        - name: kube-config
+          mountPath: /.kube
+      volumes:
+      - name: kube-config
+        secret:
+          secretName: kube-config
+          items:
+          - key: config
+            path: config
+            mode: 511
