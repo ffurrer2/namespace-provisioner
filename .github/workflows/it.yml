@@ -25,7 +25,7 @@ jobs:
       run: |
         task docker:build DOCKER_REGISTRY="${DOCKER_REGISTRY}"
     - name: Set up kind
-      uses: engineerd/setup-kind@v0.3.0
+      uses: engineerd/setup-kind@v0.7.0
     - name: Run integration tests
       run: |
         task docker:login DOCKER_USERNAME=anonymous DOCKER_PASSWORD="${{secrets.GITHUB_TOKEN}}"
