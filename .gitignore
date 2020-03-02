@@ -8,4 +8,5 @@ vendor/
 
 /config
 /demo.cast
+/namespace-provisioning-networkpolicy.yaml
 /namespace-provisioner.yaml

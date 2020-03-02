@@ -7,18 +7,19 @@ on:
     branches:
     - poc/kind-it
 
+env:
+  TASK_VERSION: 2.8.0
+
 jobs:
   kind:
     runs-on: ubuntu-latest
     steps:
     - name: Set up task
-      env:
-        TASK_VERSION: 2.8.0
       run: |
-        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${TASK_VERSION}"
+        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${{ env.TASK_VERSION }}"
     - name: Set up environment variables
       run: |
-        echo "::set-env name=DOCKER_REGISTRY::$(echo -n 'docker.pkg.github.com/${{github.repository}}' | tr '[:upper:]' '[:lower:]')"
+        echo "::set-env name=DOCKER_REGISTRY::$(echo -n 'docker.pkg.github.com/${{ github.repository }}' | tr '[:upper:]' '[:lower:]')"
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build
@@ -28,6 +29,6 @@ jobs:
       uses: engineerd/setup-kind@v0.3.0
     - name: Run integration tests
       run: |
-        task docker:login DOCKER_USERNAME=anonymous DOCKER_PASSWORD="${{secrets.GITHUB_TOKEN}}"
+        task docker:login DOCKER_USERNAME=anonymous DOCKER_PASSWORD='${{ secrets.GITHUB_TOKEN }}'
         kubectl cluster-info
         ./test/run-it.sh

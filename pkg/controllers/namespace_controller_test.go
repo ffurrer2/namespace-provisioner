@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	corev1 "k8s.io/api/core/v1"
-	"k8s.io/api/extensions/v1beta1"
+	"k8s.io/api/networking/v1beta1"
 	apiErrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -40,10 +40,20 @@ var _ = Describe("NamespaceController", func() {
 				Namespace: "config-namespace",
 			},
 			Data: map[string]string{
-				"my-ingress": `{ "apiVersion": "extensions/v1beta1", "kind": "Ingress",
-											"metadata": {"name": "test-ingress"	},
-											"spec": { "backend": {	"serviceName": "testsvc","servicePort": 80	}}
-										}`,
+				"my-ingress": `
+								{
+								    "apiVersion": "networking.k8s.io/v1beta1",
+								    "kind": "Ingress",
+								    "metadata": {
+								        "name": "test-ingress"
+								    },
+								    "spec": {
+								        "backend": {
+								            "serviceName": "testsvc",
+								            "servicePort": 80
+								        }
+								    }
+								}`,
 			},
 		}
 
@@ -82,13 +92,19 @@ var _ = Describe("NamespaceController", func() {
 						"namespace-provisioner.daimler-tss.com/config": "resources-to-deploy",
 					}
 					namespaceToTest.Status = corev1.NamespaceStatus{Phase: "Active"}
+
 					// Create a fake client to mock API calls.
-					cl := fake.NewFakeClient([]runtime.Object{
+					cl := fake.NewFakeClientWithScheme(scheme.Scheme, []runtime.Object{
 						namespaceToTest,
 						configMapWithIngressSpec,
 					}...)
+
 					// Create a ReconcileNamespace object with the scheme and fake client.
-					r := &NamespaceReconciler{Client: cl, Log: zap.Logger(true), ConfigNamespaceName: "config-namespace"}
+					r := &NamespaceReconciler{
+						Client:              cl,
+						Log:                 zap.New(zap.UseDevMode(true)),
+						ConfigNamespaceName: "config-namespace",
+					}
 
 					res, err := r.Reconcile(request)
 					Expect(err).To(BeNil())
@@ -99,21 +115,26 @@ var _ = Describe("NamespaceController", func() {
 					err = cl.Get(context.TODO(), ingressName, ingress)
 					Expect(err).To(BeNil())
 					Expect(ingress.Name).To(Equal("test-ingress"))
-
 				})
 			})
+
 			Context("Without config annotation", func() {
 				It("should not handle namespace", func() {
 
 					namespaceToTest.Status = corev1.NamespaceStatus{Phase: "Active"}
 
 					// Create a fake client to mock API calls.
-					cl := fake.NewFakeClient([]runtime.Object{
+					cl := fake.NewFakeClientWithScheme(scheme.Scheme, []runtime.Object{
 						namespaceToTest,
 						configMapWithIngressSpec,
 					}...)
+
 					// Create a ReconcileNamespace object with the scheme and fake client.
-					r := &NamespaceReconciler{Client: cl, Log: zap.Logger(true), ConfigNamespaceName: "config-namespace"}
+					r := &NamespaceReconciler{
+						Client:              cl,
+						Log:                 zap.New(zap.UseDevMode(true)),
+						ConfigNamespaceName: "config-namespace",
+					}
 
 					res, err := r.Reconcile(request)
 					Expect(err).To(BeNil())
@@ -122,7 +143,6 @@ var _ = Describe("NamespaceController", func() {
 					err = cl.Get(context.TODO(), ingressName, &v1beta1.Ingress{})
 					Expect(err).NotTo(BeNil())
 					Expect(apiErrors.IsNotFound(err)).To(BeTrue())
-
 				})
 			})
 			Context("With config annotation to non-existing config map", func() {
@@ -134,12 +154,17 @@ var _ = Describe("NamespaceController", func() {
 					namespaceToTest.Status = corev1.NamespaceStatus{Phase: "Active"}
 
 					// Create a fake client to mock API calls.
-					cl := fake.NewFakeClient([]runtime.Object{
+					cl := fake.NewFakeClientWithScheme(scheme.Scheme, []runtime.Object{
 						namespaceToTest,
 						configMapWithIngressSpec,
 					}...)
+
 					// Create a ReconcileNamespace object with the scheme and fake client.
-					r := &NamespaceReconciler{Client: cl, Log: zap.Logger(true), ConfigNamespaceName: "config-namespace"}
+					r := &NamespaceReconciler{
+						Client:              cl,
+						Log:                 zap.New(zap.UseDevMode(true)),
+						ConfigNamespaceName: "config-namespace",
+					}
 
 					res, err := r.Reconcile(request)
 					Expect(err).NotTo(BeNil())
@@ -148,7 +173,6 @@ var _ = Describe("NamespaceController", func() {
 					err = cl.Get(context.TODO(), ingressName, &v1beta1.Ingress{})
 					Expect(err).NotTo(BeNil())
 					Expect(apiErrors.IsNotFound(err)).To(BeTrue())
-
 				})
 			})
 		})
@@ -163,12 +187,17 @@ var _ = Describe("NamespaceController", func() {
 				namespaceToTest.Status = corev1.NamespaceStatus{Phase: "Terminating"}
 
 				// Create a fake client to mock API calls.
-				cl := fake.NewFakeClient([]runtime.Object{
+				cl := fake.NewFakeClientWithScheme(scheme.Scheme, []runtime.Object{
 					namespaceToTest,
 					configMapWithIngressSpec,
 				}...)
+
 				// Create a ReconcileNamespace object with the scheme and fake client.
-				r := &NamespaceReconciler{Client: cl, Log: zap.Logger(true), ConfigNamespaceName: "config-namespace"}
+				r := &NamespaceReconciler{
+					Client:              cl,
+					Log:                 zap.New(zap.UseDevMode(true)),
+					ConfigNamespaceName: "config-namespace",
+				}
 
 				res, err := r.Reconcile(request)
 				Expect(err).To(BeNil())
@@ -177,10 +206,7 @@ var _ = Describe("NamespaceController", func() {
 				err = cl.Get(context.TODO(), ingressName, &v1beta1.Ingress{})
 				Expect(err).NotTo(BeNil())
 				Expect(apiErrors.IsNotFound(err)).To(BeTrue())
-
 			})
-
 		})
-
 	})
 })

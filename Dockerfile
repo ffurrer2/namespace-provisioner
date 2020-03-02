@@ -9,9 +9,9 @@ ARG TASK_VERSION=2.8.0
 
 # Install Task
 WORKDIR /tmp
-RUN curl -fsSLo task_linux_amd64.tgz https://github.com/go-task/task/releases/download/v${TASK_VERSION}/task_linux_amd64.tar.gz && \
+RUN curl -fsSLo task.tgz https://github.com/go-task/task/releases/download/v${TASK_VERSION}/task_linux_amd64.tar.gz && \
     mkdir -p task && \
-    tar xvf task_linux_amd64.tgz -C task && \
+    tar xvf task.tgz -C task && \
     mv task/task /usr/local/bin/ && \
     rm -rf task*
 
@@ -57,7 +57,7 @@ LABEL com.daimler.namespace-provisioner.license="MIT" \
       org.opencontainers.image.documentation="https://github.com/Daimler/namespace-provisioner/blob/master/README.md" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.revision="${VCS_REF}" \
-      org.opencontainers.image.source="https://github.com/Daimler/namespace-provisioner" \
+      org.opencontainers.image.source="https://github.com/Daimler/namespace-provisioner.git" \
       org.opencontainers.image.title="Namespace Provisioner" \
       org.opencontainers.image.url="https://github.com/Daimler/namespace-provisioner" \
       org.opencontainers.image.vendor="Daimler TSS GmbH" \

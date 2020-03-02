@@ -2,11 +2,9 @@
 # Namespace Provisioner
 
 [![CI](https://github.com/Daimler/namespace-provisioner/workflows/CI/badge.svg)](https://github.com/Daimler/namespace-provisioner)
-[![CI Windows](https://github.com/Daimler/namespace-provisioner/workflows/CI%20Windows/badge.svg)](https://github.com/Daimler/namespace-provisioner)
-[![Go Report Card](https://goreportcard.com/badge/github.com/ffurrer2/namespace-provisioner)](https://goreportcard.com/report/github.com/ffurrer2/namespace-provisioner)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
-[![MIT license](https://img.shields.io/github/license/Daimler/namespace-provisioner)](https://github.com/Daimler/namespace-provisioner/blob/master/LICENSE)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Daimler/namespace-provisioner?sort=semver)](https://github.com/Daimler/namespace-provisioner/releases/latest)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Daimler/namespace-provisioner)](https://goreportcard.com/report/github.com/Daimler/namespace-provisioner)
+[![MIT License](https://img.shields.io/github/license/Daimler/namespace-provisioner)](https://github.com/Daimler/namespace-provisioner/blob/master/LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/Daimler/namespace-provisioner?sort=semver)](https://github.com/Daimler/namespace-provisioner/releases/latest)
 
 The **Namespace Provisioner** is a Kubernetes Operator that facilitates the management of multiple namespaces on kubernetes clusters.
 You can simply annotate a Kubernetes namespace and non-application specific resources like `ImagePullSecrets`, `NetworkPolicies`, `Roles` or `RoleBindings` are automatically deployed to prepare the namespace for application deployment and testing.

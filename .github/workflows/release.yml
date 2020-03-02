@@ -6,18 +6,20 @@ on:
     tags:
     - '*.*.*'
 
+env:
+  TASK_VERSION: 2.8.0
+
 jobs:
-  release-build:
+  create-release:
+    name: Create release
     runs-on: ubuntu-18.04
     steps:
     - name: Set up task
-      env:
-        TASK_VERSION: 2.8.0
       run: |
-        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${TASK_VERSION}"
+        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${{ env.TASK_VERSION }}"
     - name: Set up environment variables
       run: |
-        echo "::set-env name=DOCKER_REGISTRY::$(echo -n 'docker.pkg.github.com/${{github.repository}}' | tr '[:upper:]' '[:lower:]')"
+        echo "::set-env name=DOCKER_REGISTRY::$(echo -n 'docker.pkg.github.com/${{ github.repository }}' | tr '[:upper:]' '[:lower:]')"
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build
@@ -28,14 +30,19 @@ jobs:
         task docker:test
     - name: Push image
       run: |
-        task docker:login DOCKER_USERNAME=anonymous DOCKER_PASSWORD="${{secrets.GITHUB_TOKEN}}"
+        task docker:login DOCKER_USERNAME=anonymous DOCKER_PASSWORD='${{ secrets.GITHUB_TOKEN }}'
         task docker:push-release DOCKER_REGISTRY="${DOCKER_REGISTRY}"
     - name: Create release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{github.ref}}
-        release_name: ${{github.ref}}
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
         draft: true
         prerelease: false
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: build-artifacts
+        path: ./build
