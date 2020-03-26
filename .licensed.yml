@@ -1,0 +1,42 @@
+sources:
+  go: true
+
+go:
+  GOPATH: ~/go
+
+allowed:
+- mit
+- apache-2.0
+- bsd-2-clause
+- bsd-3-clause
+- isc
+- mpl-2.0
+
+reviewed:
+  go:
+    - sigs.k8s.io/yaml #MIT
+    - gopkg.in/yaml.v2 #Apache-2.0
+    - cloud.google.com/go/compute/metadata #Apache-2.0
+    - github.com/gogo/protobuf/proto #BSD-3-Clause
+    - github.com/gogo/protobuf/sortkeys #BSD-3-Clause
+    - gopkg.in/inf.v0 #BSD-3-Clause
+    - golang.org/x/time/rate #BSD-3-Clause
+    - golang.org/x/text/unicode/norm #BSD-3-Clause
+    - golang.org/x/text/unicode/bidi #BSD-3-Clause
+    - golang.org/x/text/secure/bidirule #BSD-3-Clause
+    - golang.org/x/text/transform #BSD-3-Clause
+    - golang.org/x/sys/unix #BSD-3-Clause
+    - golang.org/x/net/http2/hpack #BSD-3-Clause
+    - golang.org/x/net/http/httpguts #BSD-3-Clause
+    - golang.org/x/net/context/ctxhttp #BSD-3-Clause
+    - golang.org/x/net/idna #BSD-3-Clause
+    - golang.org/x/net/http2 #BSD-3-Clause
+    - golang.org/x/net/context #BSD-3-Clause
+    - golang.org/x/crypto/ssh/terminal #BSD-3-Clause
+    - github.com/pkg/errors #BSD-2-Clause
+    - go.uber.org/zap/internal/bufferpool #MIT
+    - go.uber.org/zap #MIT
+    - go.uber.org/zap/buffer #MIT
+    - go.uber.org/zap/zapcore #MIT
+    - go.uber.org/zap/internal/color #MIT
+    - go.uber.org/zap/internal/exit #MIT
