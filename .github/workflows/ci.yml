@@ -14,16 +14,15 @@ env:
 
 jobs:
   docker-build:
-    name: Docker build on Ubuntu
+    name: Docker build
     strategy:
       matrix:
         os: [ubuntu-16.04, ubuntu-18.04]
-        go: [1.13]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Set up task
       run: |
-        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${{ env.TASK_VERSION }}"
+        sudo bash -c 'curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${{ env.TASK_VERSION }}'
     - name: Set up environment variables
       run: |
         echo "::set-env name=DOCKER_REGISTRY::$(echo -n 'docker.pkg.github.com/${{ github.repository }}' | tr '[:upper:]' '[:lower:]')"
@@ -36,12 +35,12 @@ jobs:
       run: |
         task docker:test
 
-  local-build-ubuntu:
-    name: Local build on Ubuntu
+  local-build:
+    name: Local build
     strategy:
       matrix:
-        os: [ubuntu-16.04, ubuntu-18.04]
-        go: [1.13]
+        os: [ubuntu-16.04, ubuntu-18.04, macos-10.15]
+        go: [1.13, 1.14]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Set up Go
@@ -50,7 +49,7 @@ jobs:
         go-version: ${{ matrix.go }}
     - name: Set up task
       run: |
-        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${{ env.TASK_VERSION }}"
+        sudo bash -c 'curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${{ env.TASK_VERSION }}'
     - name: Checkout
       uses: actions/checkout@v2
     - name: Clean
@@ -67,13 +66,17 @@ jobs:
         task local:test
 
   local-build-windows:
-    name: Local build on Windows
-    runs-on: windows-2019
+    name: Local build
+    strategy:
+      matrix:
+        os: [windows-2019]
+        go: [1.13, 1.14]
+    runs-on: ${{ matrix.os }}
     steps:
     - name: Set up Go
       uses: actions/setup-go@v1
       with:
-        go-version: 1.13
+        go-version: ${{ matrix.go }}
     - name: Set up task
       shell: powershell
       run: |
