@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 package controllers
 
 import (
@@ -14,7 +13,7 @@ import (
 	"github.com/onsi/ginkgo/config"
 )
 
-func TestAPIs(t *testing.T) {
+func TestControllers(t *testing.T) {
 	RegisterFailHandler(Fail)
 	resultDir := os.Getenv("TEST_RESULT_DIR")
 	if resultDir == "" {

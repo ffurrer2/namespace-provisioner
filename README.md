@@ -23,15 +23,15 @@ can lead to complicated pipeline chains, which are hard to maintain and slow dow
 
 With the **Namespace Provisioner**, the preparation of namespaces can be achieved very easily:
 
-- Store the kubernetes configurations (i.e. the yaml files) of the resources in a `ConfigMap` or `Secret` and give them a meaningful name
+- Store the Kubernetes configurations (i.e. the yaml files) of the resources in a `ConfigMap` or `Secret` and give them a meaningful name
 like *image-pull-secrets*, *rbac-rules* or *tiller-deployment*.
   - Multiple configurations can be stored in one `ConfigMap` or `Secret` by using the standard document separator `---`
 - Install the **Namespace Provisioner** operator (see [Installation](#installation)).
-  - The namespace where your kubernetes configurations are stored can be configured by environment variable `CONFIG_NAMESPACE`. By default the `default`
+  - The namespace where your Kubernetes configurations are stored can be configured by environment variable `CONFIG_NAMESPACE`. By default the `default`
   namespace is used.
 - For every new namespace add an annotation to inform the provisioner:
-  - If you stored your kubernetes configurations in an ConfigMap, use the annotation key `namespace-provisioner.daimler-tss.com/config`.
-  - If you stored your kubernetes configurations in an Secret, use the annotation key `namespace-provisioner.daimler-tss.com/secret`.
+  - If you stored your Kubernetes configurations in an ConfigMap, use the annotation key `namespace-provisioner.daimler-tss.com/config`.
+  - If you stored your Kubernetes configurations in an Secret, use the annotation key `namespace-provisioner.daimler-tss.com/secret`.
   - You can set both annotations if needed.
   - The value for the annotation is a comma separated list of names of your `ConfigMaps` or `Secrets`, e.g. `namespace-provisioner.daimler-tss.com/config=rbac-rules,tiller-deployment`
 
@@ -64,9 +64,9 @@ docker images docker.pkg.github.com/daimler/namespace-provisioner/namespace-prov
 
 ## Usage
 
-The operator needs permissions to deploy new resources in newly created namespaces. Therefore you need a kubernetes
+The operator needs permissions to deploy new resources in newly created namespaces. Therefore you need a Kubernetes
 config file which includes a user with the correct permissions and the credentials. The easiest way is to add your
-kubernetes config file, which you also use with your `kubectl` command.
+Kubernetes config file, which you also use with your `kubectl` command.
 
 ### TL;DR
 
@@ -84,7 +84,7 @@ task deploy-local
 # Optional: set the context for the cluster you want to deploy namespace-provisioner to
 kubectl config use-context minikube
 
-# Get the kubernetes config file to access your tenant and replace server url
+# Get the Kubernetes config file to access your cluster and replace server url
 kubectl config view --raw --minify=true --flatten=true | \
   sed "s/server:.*/server: https:\/\/kubernetes.default.svc/g" > config
 

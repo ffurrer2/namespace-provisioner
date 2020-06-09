@@ -45,9 +45,9 @@ nextVersion() {
 # <build-metadata>:    <yyyymmdd>.<commit-hash>
 #
 # Examples:
-#    release version:                               3.2.1
-#    snapshot version 'develop' branch:             3.2.1-develop-20190123.58c323d
-#    snapshot version 'feature/new-feature' branch: 3.2.1-new-feature-20190123.58c323d
+#  release version:                               3.2.1
+#  snapshot version 'develop' branch:             3.2.1-develop-20190123.58c323d
+#  snapshot version 'feature/new-feature' branch: 3.2.1-new-feature-20190123.58c323d
 version() {
     readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     readonly SEPARATOR="-"

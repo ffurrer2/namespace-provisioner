@@ -27,19 +27,19 @@ tasks:
       BUILD_ARGS: '--build-arg BUILD_DATE={{.BUILD_DATE}} --build-arg VCS_REF={{.VCS_REF}} --build-arg BUILD_VERSION={{.BUILD_VERSION}} {{.PROXY_ARGS}}'
     cmds:
     - |-
-      {{.DOCKER_BUILDKIT}} docker build --pull --progress=plain --target test --tag {{.IMAGE_NAME}}-test:{{.VCS_REF}} {{.BUILD_ARGS}} .
+      {{.DOCKER_BUILDKIT}} docker build --tag {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}-test:{{.VCS_REF}} --pull --target test {{.BUILD_ARGS}} .
     - |-
       # Clean build directory
-      rm -rf build &&
-      # Create docker container from image
-      id=$(docker create {{.IMAGE_NAME}}-test:{{.VCS_REF}}) &&
+      rm -rf build/
+      # Create Docker container from image
+      id=$(docker create {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}-test:{{.VCS_REF}}) &&
       # Copy build results to local machine
       docker cp $id:/workdir/build build &&
       # Remove container
-      docker rm -v $id
+      docker rm --volumes $id
 
   tag:
-    desc: Tag Docker images
+    desc: Tag Docker image
     cmds:
     - docker tag {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION}} {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION_SHORT}}
     - docker tag {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION}} {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:latest
@@ -57,4 +57,4 @@ tasks:
   push-release:
     desc: Push image to {{.DOCKER_REGISTRY}}
     cmds:
-    - docker push {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION_SHORT}}
+    - docker push {{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.BUILD_VERSION}}
