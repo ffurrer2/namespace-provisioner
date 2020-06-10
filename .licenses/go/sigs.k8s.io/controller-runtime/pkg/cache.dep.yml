@@ -1,13 +1,13 @@
 ---
 name: sigs.k8s.io/controller-runtime/pkg/cache
-version: v0.2.0
+version: v0.5.0
 type: go
 summary: Package cache provides object caches that act as caching client.Reader instances
   and help drive Kubernetes-object-based event handlers.
-homepage: https://sigs.k8s.io/controller-runtime/pkg/cache
+homepage: https://godoc.org/sigs.k8s.io/controller-runtime/pkg/cache
 license: apache-2.0
 licenses:
-- sources: controller-runtime@v0.2.0/LICENSE
+- sources: controller-runtime@v0.5.0/LICENSE
   text: |2
                                      Apache License
                                Version 2.0, January 2004

@@ -1,12 +1,12 @@
 ---
 name: golang.org/x/net/http2
-version: v0.0.0-20180906233101-161cd47e91fd
+version: v0.0.0-20191004110552-13f9640d40b9
 type: go
 summary: Package http2 implements the HTTP/2 protocol.
-homepage: https://golang.org/x/net/http2
+homepage: https://godoc.org/golang.org/x/net/http2
 license: BSD-3-Clause
 licenses:
-- sources: net@v0.0.0-20180906233101-161cd47e91fd/LICENSE
+- sources: net@v0.0.0-20191004110552-13f9640d40b9/LICENSE
   text: |
     Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -35,7 +35,7 @@ licenses:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-- sources: net@v0.0.0-20180906233101-161cd47e91fd/PATENTS
+- sources: net@v0.0.0-20191004110552-13f9640d40b9/PATENTS
   text: |
     Additional IP Rights Grant (Patents)
 

@@ -1,9 +1,9 @@
 ---
 name: github.com/modern-go/reflect2
-version: v0.0.0-20180701023420-4b7aa43c6742
+version: v1.0.1
 type: go
 summary: 
-homepage: https://github.com/modern-go/reflect2
+homepage: https://godoc.org/github.com/modern-go/reflect2
 license: apache-2.0
 licenses:
 - sources: LICENSE

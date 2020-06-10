@@ -1,14 +1,14 @@
 ---
-name: github.com/pborman/uuid
-version: v0.0.0-20170612153648-e790cca94e6c
+name: github.com/google/go-cmp/cmp/internal/value
+version: v0.3.0
 type: go
-summary: The uuid package generates and inspects UUIDs.
-homepage: https://github.com/pborman/uuid
-license: bsd-3-clause
+summary: 
+homepage: https://godoc.org/github.com/google/go-cmp/cmp/internal/value
+license: other
 licenses:
-- sources: LICENSE
+- sources: go-cmp@v0.3.0/LICENSE
   text: |
-    Copyright (c) 2009,2014 Google Inc. All rights reserved.
+    Copyright (c) 2017 The Go Authors. All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are
@@ -35,4 +35,9 @@ licenses:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+- sources: go-cmp@v0.3.0/README.md
+  text: |-
+    BSD - See [LICENSE][license] file
+
+    [license]: https://github.com/google/go-cmp/blob/master/LICENSE
 notices: []

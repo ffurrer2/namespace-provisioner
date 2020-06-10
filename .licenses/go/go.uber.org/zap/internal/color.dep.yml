@@ -1,12 +1,12 @@
 ---
 name: go.uber.org/zap/internal/color
-version: v1.9.1
+version: v1.10.0
 type: go
 summary: Package color adds coloring functionality for TTY output.
-homepage: https://go.uber.org/zap/internal/color
+homepage: https://godoc.org/go.uber.org/zap/internal/color
 license: mit
 licenses:
-- sources: zap@v1.9.1/LICENSE.txt
+- sources: zap@v1.10.0/LICENSE.txt
   text: |
     Copyright (c) 2016-2017 Uber Technologies, Inc.
 
@@ -27,7 +27,7 @@ licenses:
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
-- sources: zap@v1.9.1/check_license.sh
+- sources: zap@v1.10.0/check_license.sh
   text: "#!/bin/bash -e\n\nERROR_COUNT=0\nwhile read -r file\ndo\n\tcase \"$(head
     -1 \"${file}\")\" in\n\t\t*\"Copyright (c) \"*\" Uber Technologies, Inc.\")\n\t\t\t#
     everything's cool\n\t\t\t;;\n\t\t*)\n\t\t\techo \"$file is missing license header.\"\n\t\t\t((

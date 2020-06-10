@@ -1,13 +1,12 @@
 ---
-name: k8s.io/client-go/util/jsonpath
-version: v11.0.1-0.20190409021438-1a26190bd76a+incompatible
+name: k8s.io/client-go/kubernetes/typed/admissionregistration/v1
+version: v0.17.3
 type: go
-summary: package jsonpath is a template engine using jsonpath syntax, which can be
-  seen at http://goessner.net/articles/JsonPath/.
-homepage: https://k8s.io/client-go/util/jsonpath
+summary: This package has the automatically generated typed clients.
+homepage: https://godoc.org/k8s.io/client-go/kubernetes/typed/admissionregistration/v1
 license: apache-2.0
 licenses:
-- sources: client-go@v11.0.1-0.20190409021438-1a26190bd76a+incompatible/LICENSE
+- sources: client-go@v0.17.3/LICENSE
   text: |2
 
                                      Apache License

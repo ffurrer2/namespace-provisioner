@@ -1,12 +1,12 @@
 ---
 name: k8s.io/client-go/kubernetes/typed/networking/v1
-version: v11.0.1-0.20190409021438-1a26190bd76a+incompatible
+version: v0.17.3
 type: go
 summary: This package has the automatically generated typed clients.
-homepage: https://k8s.io/client-go/kubernetes/typed/networking/v1
+homepage: https://godoc.org/k8s.io/client-go/kubernetes/typed/networking/v1
 license: apache-2.0
 licenses:
-- sources: client-go@v11.0.1-0.20190409021438-1a26190bd76a+incompatible/LICENSE
+- sources: client-go@v0.17.3/LICENSE
   text: |2
 
                                      Apache License

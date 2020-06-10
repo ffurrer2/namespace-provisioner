@@ -1,12 +1,12 @@
 ---
 name: github.com/golang/protobuf/ptypes/any
-version: v1.2.0
+version: v1.3.2
 type: go
 summary: 
-homepage: https://github.com/golang/protobuf/ptypes/any
+homepage: https://godoc.org/github.com/golang/protobuf/ptypes/any
 license: bsd-3-clause
 licenses:
-- sources: protobuf@v1.2.0/LICENSE
+- sources: protobuf@v1.3.2/LICENSE
   text: |+
     Copyright 2010 The Go Authors.  All rights reserved.
 

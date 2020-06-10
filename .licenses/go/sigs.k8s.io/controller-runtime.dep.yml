@@ -1,10 +1,10 @@
 ---
 name: sigs.k8s.io/controller-runtime
-version: v0.2.0
+version: v0.5.0
 type: go
 summary: Package controllerruntime provides tools to construct Kubernetes-style controllers
   that manipulate both Kubernetes CRDs and aggregated/built-in Kubernetes APIs.
-homepage: https://sigs.k8s.io/controller-runtime
+homepage: https://godoc.org/sigs.k8s.io/controller-runtime
 license: apache-2.0
 licenses:
 - sources: LICENSE

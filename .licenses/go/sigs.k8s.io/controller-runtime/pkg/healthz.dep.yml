@@ -1,15 +1,13 @@
 ---
-name: cloud.google.com/go/compute/metadata
-version: v0.26.0
+name: sigs.k8s.io/controller-runtime/pkg/healthz
+version: v0.5.0
 type: go
-summary: Package metadata provides access to Google Compute Engine (GCE) metadata
-  and API service accounts.
-homepage: https://cloud.google.com/go/compute/metadata
+summary: Package healthz contains helpers from supporting liveness and readiness endpoints.
+homepage: https://godoc.org/sigs.k8s.io/controller-runtime/pkg/healthz
 license: apache-2.0
 licenses:
-- sources: go@v0.26.0/LICENSE
+- sources: controller-runtime@v0.5.0/LICENSE
   text: |2
-
                                      Apache License
                                Version 2.0, January 2004
                             http://www.apache.org/licenses/
@@ -190,7 +188,7 @@ licenses:
        APPENDIX: How to apply the Apache License to your work.
 
           To apply the Apache License to your work, attach the following
-          boilerplate notice, with the fields enclosed by brackets "[]"
+          boilerplate notice, with the fields enclosed by brackets "{}"
           replaced with your own identifying information. (Don't include
           the brackets!)  The text should be enclosed in the appropriate
           comment syntax for the file format. We also recommend that a
@@ -198,7 +196,7 @@ licenses:
           same "printed page" as the copyright notice for easier
           identification within third-party archives.
 
-       Copyright [yyyy] [name of copyright owner]
+       Copyright {yyyy} {name of copyright owner}
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
@@ -211,29 +209,4 @@ licenses:
        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
        See the License for the specific language governing permissions and
        limitations under the License.
-- sources: go@v0.26.0/license_test.go
-  text: "// Copyright 2016 Google LLC\n//\n// Licensed under the Apache License, Version
-    2.0 (the \"License\");\n// you may not use this file except in compliance with
-    the License.\n// You may obtain a copy of the License at\n//\n//      http://www.apache.org/licenses/LICENSE-2.0\n//\n//
-    Unless required by applicable law or agreed to in writing, software\n// distributed
-    under the License is distributed on an \"AS IS\" BASIS,\n// WITHOUT WARRANTIES
-    OR CONDITIONS OF ANY KIND, either express or implied.\n// See the License for
-    the specific language governing permissions and\n// limitations under the License.\n\npackage
-    cloud\n\nimport (\n\t\"bytes\"\n\t\"io/ioutil\"\n\t\"os\"\n\t\"path/filepath\"\n\t\"strings\"\n\t\"testing\"\n)\n\nvar
-    sentinels = []string{\n\t\"Copyright\",\n\t\"Google\",\n\t`Licensed under the
-    Apache License, Version 2.0 (the \"License\");`,\n}\n\nfunc TestLicense(t *testing.T)
-    {\n\tt.Parallel()\n\terr := filepath.Walk(\".\", func(path string, fi os.FileInfo,
-    err error) error {\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\n\t\tif ext
-    := filepath.Ext(path); ext != \".go\" && ext != \".proto\" {\n\t\t\treturn nil\n\t\t}\n\t\tif
-    strings.HasSuffix(path, \".pb.go\") {\n\t\t\t// .pb.go files are generated from
-    the proto files.\n\t\t\t// .proto files must have license headers.\n\t\t\treturn
-    nil\n\t\t}\n\t\tif path == \"bigtable/cmd/cbt/cbtdoc.go\" {\n\t\t\t// Automatically
-    generated.\n\t\t\treturn nil\n\t\t}\n\t\tif path == \"cmd/go-cloud-debug-agent/internal/debug/elf/elf.go\"
-    {\n\t\t\t// BSD license, which is compatible, is embedded in the file.\n\t\t\treturn
-    nil\n\t\t}\n\t\tsrc, err := ioutil.ReadFile(path)\n\t\tif err != nil {\n\t\t\treturn
-    nil\n\t\t}\n\t\tsrc = src[:300] // Ensure all of the sentinel values are at the
-    top of the file.\n\n\t\t// Find license\n\t\tfor _, sentinel := range sentinels
-    {\n\t\t\tif !bytes.Contains(src, []byte(sentinel)) {\n\t\t\t\tt.Errorf(\"%v: license
-    header not present. want %q\", path, sentinel)\n\t\t\t\treturn nil\n\t\t\t}\n\t\t}\n\n\t\treturn
-    nil\n\t})\n\tif err != nil {\n\t\tt.Fatal(err)\n\t}\n}\n"
 notices: []

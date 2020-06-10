@@ -1,13 +1,13 @@
 ---
 name: sigs.k8s.io/controller-runtime/pkg/client
-version: v0.2.0
+version: v0.5.0
 type: go
 summary: Package client contains functionality for interacting with Kubernetes API
   servers.
-homepage: https://sigs.k8s.io/controller-runtime/pkg/client
+homepage: https://godoc.org/sigs.k8s.io/controller-runtime/pkg/client
 license: apache-2.0
 licenses:
-- sources: controller-runtime@v0.2.0/LICENSE
+- sources: controller-runtime@v0.5.0/LICENSE
   text: |2
                                      Apache License
                                Version 2.0, January 2004

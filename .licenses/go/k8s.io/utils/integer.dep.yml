@@ -1,12 +1,12 @@
 ---
 name: k8s.io/utils/integer
-version: v0.0.0-20190506122338-8fab8cb257d5
+version: v0.0.0-20191114184206-e782cd3c129f
 type: go
 summary: 
-homepage: https://k8s.io/utils/integer
+homepage: https://godoc.org/k8s.io/utils/integer
 license: apache-2.0
 licenses:
-- sources: utils@v0.0.0-20190506122338-8fab8cb257d5/LICENSE
+- sources: utils@v0.0.0-20191114184206-e782cd3c129f/LICENSE
   text: |2
 
                                      Apache License

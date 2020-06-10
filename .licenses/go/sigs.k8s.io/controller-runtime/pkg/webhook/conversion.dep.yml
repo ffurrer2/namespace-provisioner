@@ -1,13 +1,13 @@
 ---
 name: sigs.k8s.io/controller-runtime/pkg/webhook/conversion
-version: v0.2.0
+version: v0.5.0
 type: go
 summary: Package conversion provides implementation for CRD conversion webhook that
   implements handler for version conversion requests for types that are convertible.
-homepage: https://sigs.k8s.io/controller-runtime/pkg/webhook/conversion
+homepage: https://godoc.org/sigs.k8s.io/controller-runtime/pkg/webhook/conversion
 license: apache-2.0
 licenses:
-- sources: controller-runtime@v0.2.0/LICENSE
+- sources: controller-runtime@v0.5.0/LICENSE
   text: |2
                                      Apache License
                                Version 2.0, January 2004

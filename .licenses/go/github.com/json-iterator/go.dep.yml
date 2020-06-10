@@ -1,10 +1,10 @@
 ---
 name: github.com/json-iterator/go
-version: v1.1.5
+version: v1.1.8
 type: go
 summary: Package jsoniter implements encoding and decoding of JSON as defined in RFC
   4627 and provides interfaces with identical syntax of standard lib encoding/json.
-homepage: https://github.com/json-iterator/go
+homepage: https://godoc.org/github.com/json-iterator/go
 license: mit
 licenses:
 - sources: LICENSE

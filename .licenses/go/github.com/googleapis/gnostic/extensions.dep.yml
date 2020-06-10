@@ -1,12 +1,12 @@
 ---
 name: github.com/googleapis/gnostic/extensions
-version: v0.2.0
+version: v0.3.1
 type: go
-summary: Package openapiextension_v1 is a generated protocol buffer package.
-homepage: https://github.com/googleapis/gnostic/extensions
+summary: 
+homepage: https://godoc.org/github.com/googleapis/gnostic/extensions
 license: apache-2.0
 licenses:
-- sources: gnostic@v0.2.0/LICENSE
+- sources: gnostic@v0.3.1/LICENSE
   text: |2+
 
                                      Apache License

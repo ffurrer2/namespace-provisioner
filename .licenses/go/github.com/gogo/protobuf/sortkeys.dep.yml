@@ -1,17 +1,17 @@
 ---
 name: github.com/gogo/protobuf/sortkeys
-version: v1.1.1
+version: v1.2.2-0.20190723190241-65acae22fc9d
 type: go
 summary: 
-homepage: https://github.com/gogo/protobuf/sortkeys
-license: BSD-3-Clause
+homepage: https://godoc.org/github.com/gogo/protobuf/sortkeys
+license: other
+review_changed_license: true
 licenses:
-- sources: protobuf@v1.1.1/LICENSE
+- sources: protobuf@v1.2.2-0.20190723190241-65acae22fc9d/LICENSE
   text: |+
-    Protocol Buffers for Go with Gadgets
-
     Copyright (c) 2013, The GoGo Authors. All rights reserved.
-    http://github.com/gogo/protobuf
+
+    Protocol Buffers for Go with Gadgets
 
     Go support for Protocol Buffers - Google's data interchange format
 

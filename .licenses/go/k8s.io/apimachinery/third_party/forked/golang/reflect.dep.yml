@@ -1,13 +1,13 @@
 ---
 name: k8s.io/apimachinery/third_party/forked/golang/reflect
-version: v0.0.0-20190404173353-6a84e37a896d
+version: v0.17.3
 type: go
 summary: Package reflect is a fork of go's standard library reflection package, which
   allows for deep equal with equality functions defined.
-homepage: https://k8s.io/apimachinery/third_party/forked/golang/reflect
+homepage: https://godoc.org/k8s.io/apimachinery/third_party/forked/golang/reflect
 license: apache-2.0
 licenses:
-- sources: apimachinery@v0.0.0-20190404173353-6a84e37a896d/LICENSE
+- sources: apimachinery@v0.17.3/LICENSE
   text: |2
 
                                      Apache License

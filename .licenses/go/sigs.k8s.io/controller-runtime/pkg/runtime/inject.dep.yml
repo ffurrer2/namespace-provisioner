@@ -1,13 +1,13 @@
 ---
 name: sigs.k8s.io/controller-runtime/pkg/runtime/inject
-version: v0.2.0
+version: v0.5.0
 type: go
 summary: Package inject defines interfaces and functions for propagating dependencies
   from a ControllerManager to the components registered with it.
-homepage: https://sigs.k8s.io/controller-runtime/pkg/runtime/inject
+homepage: https://godoc.org/sigs.k8s.io/controller-runtime/pkg/runtime/inject
 license: apache-2.0
 licenses:
-- sources: controller-runtime@v0.2.0/LICENSE
+- sources: controller-runtime@v0.5.0/LICENSE
   text: |2
                                      Apache License
                                Version 2.0, January 2004

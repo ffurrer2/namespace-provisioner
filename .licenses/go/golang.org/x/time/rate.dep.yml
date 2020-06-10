@@ -1,12 +1,12 @@
 ---
 name: golang.org/x/time/rate
-version: v0.0.0-20180412165947-fbb02b2291d2
+version: v0.0.0-20190308202827-9d24e82272b4
 type: go
 summary: Package rate provides a rate limiter.
-homepage: https://golang.org/x/time/rate
+homepage: https://godoc.org/golang.org/x/time/rate
 license: BSD-3-Clause
 licenses:
-- sources: time@v0.0.0-20180412165947-fbb02b2291d2/LICENSE
+- sources: time@v0.0.0-20190308202827-9d24e82272b4/LICENSE
   text: |
     Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -35,7 +35,7 @@ licenses:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-- sources: time@v0.0.0-20180412165947-fbb02b2291d2/PATENTS
+- sources: time@v0.0.0-20190308202827-9d24e82272b4/PATENTS
   text: |
     Additional IP Rights Grant (Patents)
 

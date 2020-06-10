@@ -1,14 +1,14 @@
 ---
 name: sigs.k8s.io/controller-runtime/pkg/conversion
-version: v0.2.0
+version: v0.5.0
 type: go
 summary: Package conversion provides interface definitions that an API Type needs
   to implement for it to be supported by the generic conversion webhook handler defined
   under pkg/webhook/conversion.
-homepage: https://sigs.k8s.io/controller-runtime/pkg/conversion
+homepage: https://godoc.org/sigs.k8s.io/controller-runtime/pkg/conversion
 license: apache-2.0
 licenses:
-- sources: controller-runtime@v0.2.0/LICENSE
+- sources: controller-runtime@v0.5.0/LICENSE
   text: |2
                                      Apache License
                                Version 2.0, January 2004

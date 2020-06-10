@@ -1,12 +1,12 @@
 ---
 name: k8s.io/apimachinery/pkg/api/resource
-version: v0.0.0-20190404173353-6a84e37a896d
+version: v0.17.3
 type: go
-summary: Package resource is a generated protocol buffer package.
-homepage: https://k8s.io/apimachinery/pkg/api/resource
+summary: 
+homepage: https://godoc.org/k8s.io/apimachinery/pkg/api/resource
 license: apache-2.0
 licenses:
-- sources: apimachinery@v0.0.0-20190404173353-6a84e37a896d/LICENSE
+- sources: apimachinery@v0.17.3/LICENSE
   text: |2
 
                                      Apache License

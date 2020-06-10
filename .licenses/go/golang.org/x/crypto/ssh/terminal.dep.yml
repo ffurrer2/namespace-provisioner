@@ -1,13 +1,13 @@
 ---
 name: golang.org/x/crypto/ssh/terminal
-version: v0.0.0-20180820150726-614d502a4dac
+version: v0.0.0-20190820162420-60c769a6c586
 type: go
 summary: Package terminal provides support functions for dealing with terminals, as
   commonly found on UNIX systems.
-homepage: https://golang.org/x/crypto/ssh/terminal
+homepage: https://godoc.org/golang.org/x/crypto/ssh/terminal
 license: BSD-3-Clause
 licenses:
-- sources: crypto@v0.0.0-20180820150726-614d502a4dac/LICENSE
+- sources: crypto@v0.0.0-20190820162420-60c769a6c586/LICENSE
   text: |
     Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -36,7 +36,7 @@ licenses:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-- sources: crypto@v0.0.0-20180820150726-614d502a4dac/PATENTS
+- sources: crypto@v0.0.0-20190820162420-60c769a6c586/PATENTS
   text: |
     Additional IP Rights Grant (Patents)
 

@@ -1,9 +1,9 @@
 ---
 name: github.com/google/gofuzz
-version: v0.0.0-20170612174753-24818f796faf
+version: v1.0.0
 type: go
 summary: Package fuzz is a library for populating go objects with random values.
-homepage: https://github.com/google/gofuzz
+homepage: https://godoc.org/github.com/google/gofuzz
 license: apache-2.0
 licenses:
 - sources: LICENSE

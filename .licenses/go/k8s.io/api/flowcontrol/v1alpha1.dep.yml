@@ -1,13 +1,14 @@
 ---
-name: sigs.k8s.io/controller-runtime/pkg/internal/objectutil
-version: v0.2.0
+name: k8s.io/api/flowcontrol/v1alpha1
+version: v0.17.3
 type: go
-summary: 
-homepage: https://sigs.k8s.io/controller-runtime/pkg/internal/objectutil
+summary: Package v1alpha1 holds api types of version v1alpha1 for group "flowcontrol.apiserver.k8s.io".
+homepage: https://godoc.org/k8s.io/api/flowcontrol/v1alpha1
 license: apache-2.0
 licenses:
-- sources: controller-runtime@v0.2.0/LICENSE
+- sources: api@v0.17.3/LICENSE
   text: |2
+
                                      Apache License
                                Version 2.0, January 2004
                             http://www.apache.org/licenses/
@@ -188,7 +189,7 @@ licenses:
        APPENDIX: How to apply the Apache License to your work.
 
           To apply the Apache License to your work, attach the following
-          boilerplate notice, with the fields enclosed by brackets "{}"
+          boilerplate notice, with the fields enclosed by brackets "[]"
           replaced with your own identifying information. (Don't include
           the brackets!)  The text should be enclosed in the appropriate
           comment syntax for the file format. We also recommend that a
@@ -196,7 +197,7 @@ licenses:
           same "printed page" as the copyright notice for easier
           identification within third-party archives.
 
-       Copyright {yyyy} {name of copyright owner}
+       Copyright [yyyy] [name of copyright owner]
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.

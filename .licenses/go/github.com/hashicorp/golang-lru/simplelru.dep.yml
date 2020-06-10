@@ -1,12 +1,12 @@
 ---
 name: github.com/hashicorp/golang-lru/simplelru
-version: v0.0.0-20180201235237-0fb14efe8c47
+version: v0.5.1
 type: go
 summary: 
-homepage: https://github.com/hashicorp/golang-lru/simplelru
+homepage: https://godoc.org/github.com/hashicorp/golang-lru/simplelru
 license: mpl-2.0
 licenses:
-- sources: golang-lru@v0.0.0-20180201235237-0fb14efe8c47/LICENSE
+- sources: golang-lru@v0.5.1/LICENSE
   text: |
     Mozilla Public License, version 2.0
 

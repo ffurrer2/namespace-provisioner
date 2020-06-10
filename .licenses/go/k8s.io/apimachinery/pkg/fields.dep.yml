@@ -1,13 +1,13 @@
 ---
 name: k8s.io/apimachinery/pkg/fields
-version: v0.0.0-20190404173353-6a84e37a896d
+version: v0.17.3
 type: go
 summary: Package fields implements a simple field system, parsing and matching selectors
   with sets of fields.
-homepage: https://k8s.io/apimachinery/pkg/fields
+homepage: https://godoc.org/k8s.io/apimachinery/pkg/fields
 license: apache-2.0
 licenses:
-- sources: apimachinery@v0.0.0-20190404173353-6a84e37a896d/LICENSE
+- sources: apimachinery@v0.17.3/LICENSE
   text: |2
 
                                      Apache License

@@ -1,13 +1,14 @@
 ---
-name: github.com/prometheus/procfs/xfs
-version: v0.0.0-20180725123919-05ee40e3a273
+name: k8s.io/client-go/kubernetes/typed/discovery/v1alpha1
+version: v0.17.3
 type: go
-summary: Package xfs provides access to statistics exposed by the XFS filesystem.
-homepage: https://github.com/prometheus/procfs/xfs
+summary: This package has the automatically generated typed clients.
+homepage: https://godoc.org/k8s.io/client-go/kubernetes/typed/discovery/v1alpha1
 license: apache-2.0
 licenses:
-- sources: procfs@v0.0.0-20180725123919-05ee40e3a273/LICENSE
+- sources: client-go@v0.17.3/LICENSE
   text: |2
+
                                      Apache License
                                Version 2.0, January 2004
                             http://www.apache.org/licenses/

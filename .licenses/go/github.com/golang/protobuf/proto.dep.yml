@@ -1,13 +1,13 @@
 ---
 name: github.com/golang/protobuf/proto
-version: v1.2.0
+version: v1.3.2
 type: go
 summary: Package proto converts data structures to and from the wire format of protocol
   buffers.
-homepage: https://github.com/golang/protobuf/proto
+homepage: https://godoc.org/github.com/golang/protobuf/proto
 license: bsd-3-clause
 licenses:
-- sources: protobuf@v1.2.0/LICENSE
+- sources: protobuf@v1.3.2/LICENSE
   text: |+
     Copyright 2010 The Go Authors.  All rights reserved.
 
