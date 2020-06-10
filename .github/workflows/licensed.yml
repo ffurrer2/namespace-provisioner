@@ -1,13 +1,10 @@
 # SPDX-License-Identifier: MIT
-
 name: Licensed
 
 on:
   push:
     branches:
-    #- master
-    #- feature/*
-    - poc/licensed
+    - poc/github-actions/disabled
 
 jobs:
   test:
@@ -25,7 +22,7 @@ jobs:
         sudo bash -c "curl -sL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${TASK_VERSION}"
     - name: Set up Licensed
       env:
-        LICENSED_VERSION: 2.3.2
+        LICENSED_VERSION: 2.11.1
       run: |-
         curl -sLSfo /tmp/licensed.tgz "https://github.com/github/licensed/releases/download/${LICENSED_VERSION}/licensed-${LICENSED_VERSION}-linux-x64.tar.gz"
         mkdir -p /tmp/licensed
@@ -33,7 +30,7 @@ jobs:
         sudo mv /tmp/licensed/licensed /usr/local/bin/licensed
         rm -rf /tmp/licensed*
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: License check
       run: |-
         task local:prepare
