@@ -6,7 +6,6 @@ summary: Package proto converts data structures to and from the wire format of p
   buffers.
 homepage: https://godoc.org/github.com/gogo/protobuf/proto
 license: other
-review_changed_license: true
 licenses:
 - sources: protobuf@v1.2.2-0.20190723190241-65acae22fc9d/LICENSE
   text: |+

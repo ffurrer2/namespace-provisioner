@@ -3,8 +3,8 @@ name: gopkg.in/inf.v0
 version: v0.9.1
 type: go
 summary: Package inf (type inf.Dec) implements "infinite-precision" decimal arithmetic.
-homepage: https://gopkg.in/inf.v0
-license: BSD-3-Clause
+homepage: https://godoc.org/gopkg.in/inf.v0
+license: other
 licenses:
 - sources: LICENSE
   text: |

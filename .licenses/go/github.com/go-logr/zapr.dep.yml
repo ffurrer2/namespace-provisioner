@@ -4,7 +4,7 @@ version: v0.1.0
 type: go
 summary: package zapr defines an implementation of the github.com/go-logr/logr interfaces
   built on top of Zap (go.uber.org/zap).
-homepage: https://github.com/go-logr/zapr
+homepage: https://godoc.org/github.com/go-logr/zapr
 license: apache-2.0
 licenses:
 - sources: LICENSE

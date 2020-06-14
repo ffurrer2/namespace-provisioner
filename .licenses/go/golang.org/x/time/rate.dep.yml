@@ -4,7 +4,7 @@ version: v0.0.0-20190308202827-9d24e82272b4
 type: go
 summary: Package rate provides a rate limiter.
 homepage: https://godoc.org/golang.org/x/time/rate
-license: BSD-3-Clause
+license: other
 licenses:
 - sources: time@v0.0.0-20190308202827-9d24e82272b4/LICENSE
   text: |

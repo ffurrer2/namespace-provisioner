@@ -3,7 +3,7 @@ name: gomodules.xyz/jsonpatch/v2
 version: v2.0.1
 type: go
 summary: 
-homepage: https://gomodules.xyz/jsonpatch/v2
+homepage: https://godoc.org/gomodules.xyz/jsonpatch/v2
 license: apache-2.0
 licenses:
 - sources: LICENSE

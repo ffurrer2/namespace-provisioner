@@ -3,7 +3,7 @@ name: sigs.k8s.io/yaml
 version: v1.1.0
 type: go
 summary: 
-homepage: https://sigs.k8s.io/yaml
+homepage: https://godoc.org/sigs.k8s.io/yaml
 license: mit
 licenses:
 - sources: LICENSE

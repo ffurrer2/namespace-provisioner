@@ -4,7 +4,7 @@ version: v0.0.0-20191004110552-13f9640d40b9
 type: go
 summary: Package http2 implements the HTTP/2 protocol.
 homepage: https://godoc.org/golang.org/x/net/http2
-license: BSD-3-Clause
+license: other
 licenses:
 - sources: net@v0.0.0-20191004110552-13f9640d40b9/LICENSE
   text: |

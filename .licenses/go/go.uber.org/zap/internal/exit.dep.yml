@@ -5,7 +5,7 @@ type: go
 summary: Package exit provides stubs so that unit tests can exercise code that calls
   os.Exit(1).
 homepage: https://godoc.org/go.uber.org/zap/internal/exit
-license: mit
+license: other
 licenses:
 - sources: zap@v1.10.0/LICENSE.txt
   text: |

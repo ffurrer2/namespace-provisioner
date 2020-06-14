@@ -3,7 +3,7 @@ name: github.com/evanphx/json-patch
 version: v4.5.0+incompatible
 type: go
 summary: 
-homepage: https://github.com/evanphx/json-patch
+homepage: https://godoc.org/github.com/evanphx/json-patch
 license: bsd-3-clause
 licenses:
 - sources: LICENSE

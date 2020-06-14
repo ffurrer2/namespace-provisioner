@@ -4,7 +4,7 @@ version: v1.4.7
 type: go
 summary: Package fsnotify provides a platform-independent interface for file system
   notifications.
-homepage: https://gopkg.in/fsnotify.v1
+homepage: https://godoc.org/gopkg.in/fsnotify.v1
 license: bsd-3-clause
 licenses:
 - sources: LICENSE

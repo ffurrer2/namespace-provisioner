@@ -3,7 +3,7 @@ name: github.com/go-logr/logr
 version: v0.1.0
 type: go
 summary: Package logr defines abstract interfaces for logging.
-homepage: https://github.com/go-logr/logr
+homepage: https://godoc.org/github.com/go-logr/logr
 license: apache-2.0
 licenses:
 - sources: LICENSE
