@@ -8,10 +8,11 @@ readonly KUBE_CONTEXT='kind-kind'
 readonly NAMESPACE='test-namespace'
 # This is where the operator is deployed
 readonly OP_NAMESPACE='operator-namespace'
+readonly DOCKER_REGISTRY="${parameter:-docker.pkg.github.com/daimler/namespace-provisioner}"
 
 prepare() {
   # Load image into cluster
-  kind load docker-image docker.pkg.github.com/daimler/namespace-provisioner/namespace-provisioner:latest
+  kind load docker-image "${DOCKER_REGISTRY}/namespace-provisioner:latest"
 
   # Delete config and secret file
   rm -f config kube-config-secret.yaml
@@ -26,10 +27,10 @@ prepare() {
   kubectl create namespace "${OP_NAMESPACE}" --context=${KUBE_CONTEXT}
 
   # Get the kubernetes config file to access your tenant and replace server url
-  kubectl config view --raw --minify=true --flatten=true --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}" | sed 's/server:.*/server: https:\/\/kubernetes.default.svc/g' > config
+  kubectl config view --raw --minify=true --flatten=true --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}" | sed 's/server:.*/server: https:\/\/kubernetes.default.svc/g' >config
 
   # Create secret deployment file for kube-config
-  kubectl create secret generic kube-config --from-file="${SCRIPT_DIR}/../deploy/config" --dry-run -oyaml --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}" > kube-config-secret.yaml
+  kubectl create secret generic kube-config --from-file=config --dry-run=client -o yaml --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}" > kube-config-secret.yaml
 
   # Deploy the secret
   kubectl apply -f kube-config-secret.yaml --wait --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}"
