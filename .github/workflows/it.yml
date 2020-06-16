@@ -24,6 +24,7 @@ jobs:
     - name: Build
       run: |
         task docker:build DOCKER_REGISTRY="${DOCKER_REGISTRY}"
+        docker tag "${DOCKER_REGISTRY}/namespace-provisioner:latest" docker.pkg.github.com/daimler/namespace-provisioner/namespace-provisioner:latest
     - name: Set up kind
       uses: engineerd/setup-kind@v0.4.0
     - name: Run integration tests
