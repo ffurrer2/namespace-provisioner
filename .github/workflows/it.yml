@@ -30,4 +30,5 @@ jobs:
     - name: Run integration tests
       run: |
         kubectl cluster-info
+        docker images
         ./test/run-it.sh
