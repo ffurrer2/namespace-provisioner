@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: MIT
-
 name: Integration test
 
 on:
@@ -12,11 +11,11 @@ env:
 
 jobs:
   kind:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
     - name: Set up task
       run: |
-        sudo bash -c "curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${{ env.TASK_VERSION }}"
+        sudo bash -c 'curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${{ env.TASK_VERSION }}'
     - name: Set up environment variables
       run: |
         echo "::set-env name=DOCKER_REGISTRY::$(echo -n 'docker.pkg.github.com/${{ github.repository }}' | tr '[:upper:]' '[:lower:]')"
@@ -26,9 +25,8 @@ jobs:
       run: |
         task docker:build DOCKER_REGISTRY="${DOCKER_REGISTRY}"
     - name: Set up kind
-      uses: engineerd/setup-kind@v0.3.0
+      uses: engineerd/setup-kind@v0.4.0
     - name: Run integration tests
       run: |
-        task docker:login DOCKER_USERNAME=anonymous DOCKER_PASSWORD='${{ secrets.GITHUB_TOKEN }}'
         kubectl cluster-info
         ./test/run-it.sh

@@ -2,19 +2,16 @@
 # SPDX-License-Identifier: MIT
 set -euo pipefail
 
-readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-readonly KUBE_CONTEXT=kind-kind
-
+readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly KUBE_CONTEXT='kind-kind'
 # This is the test namespace
-readonly NAMESPACE=test-namespace
-
+readonly NAMESPACE='test-namespace'
 # This is where the operator is deployed
- readonly OP_NAMESPACE=operator-namespace
+readonly OP_NAMESPACE='operator-namespace'
 
 prepare() {
-  #docker pull docker.pkg.github.com/daimler/namespace-provisioner/namespace-provisioner:latest
-  #task -d $DIR/.. docker:build
+  # Load image into cluster
+  kind load docker-image docker.pkg.github.com/daimler/namespace-provisioner/namespace-provisioner:latest
 
   # Delete config and secret file
   rm -f config kube-config-secret.yaml
@@ -32,16 +29,16 @@ prepare() {
   kubectl config view --raw --minify=true --flatten=true --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}" | sed 's/server:.*/server: https:\/\/kubernetes.default.svc/g' > config
 
   # Create secret deployment file for kube-config
-  kubectl create secret generic kube-config --from-file=config --dry-run -oyaml --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}" > kube-config-secret.yaml
+  kubectl create secret generic kube-config --from-file="${SCRIPT_DIR}/../deploy/config" --dry-run -oyaml --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}" > kube-config-secret.yaml
 
   # Deploy the secret
   kubectl apply -f kube-config-secret.yaml --wait --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}"
 
   # Deploy the namespace-provisioner
-  kubectl create -f "${DIR}/../deploy/namespace-provisioner-${KUBE_CONTEXT}.yaml" --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}"
+  kubectl apply -f "${SCRIPT_DIR}/../deploy/namespace-provisioner-${KUBE_CONTEXT}.yaml" --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}"
 
   # Deploy the namespace-provisioning-networkpolicy ConfigMap
-  kubectl create configmap namespace-provisioning-networkpolicy --from-file="${DIR}/deploy/namespace-provisioning-networkpolicy.yaml" --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}"
+  kubectl create configmap namespace-provisioning-networkpolicy --from-file="${SCRIPT_DIR}/deploy/namespace-provisioning-networkpolicy.yaml" --context="${KUBE_CONTEXT}" --namespace="${OP_NAMESPACE}"
 }
 
 test() {
@@ -63,17 +60,24 @@ test() {
 
   if [[ $(kubectl --context="${KUBE_CONTEXT}" --namespace="${NAMESPACE}" get netpol | grep -c 'kube-system.app.prometheus-allow-all') -ne 1 ]]; then
     echo "!!! test failed !!!"
+    return 1
   fi
+}
 
-  # Delete config and secret file
-  rm -f config kube-config-secret.yaml
-
-  # Delete the ${NAMESPACE} namespace
+clean_up() {
+    # Delete the ${NAMESPACE} namespace
   kubectl delete namespace "${NAMESPACE}" --context="${KUBE_CONTEXT}" --now --ignore-not-found
 
   # Delete the ${OP_NAMESPACE} namespace
   kubectl delete namespace "${OP_NAMESPACE}" --context="${KUBE_CONTEXT}" --now --ignore-not-found
+
+  # Delete config and secret file
+  rm -f config kube-config-secret.yaml
 }
 
 prepare
 test
+clean_up
+
+#kubectl cluster-info
+#kubectl get pods --all-namespaces
