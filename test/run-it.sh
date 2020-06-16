@@ -8,11 +8,10 @@ readonly KUBE_CONTEXT='kind-kind'
 readonly NAMESPACE='test-namespace'
 # This is where the operator is deployed
 readonly OP_NAMESPACE='operator-namespace'
-readonly DOCKER_REGISTRY="${parameter:-docker.pkg.github.com/daimler/namespace-provisioner}"
 
 prepare() {
   # Load image into cluster
-  kind load docker-image "${DOCKER_REGISTRY}/namespace-provisioner:latest"
+  kind load docker-image "docker.pkg.github.com/daimler/namespace-provisioner/namespace-provisioner:latest"
 
   # Delete config and secret file
   rm -f config kube-config-secret.yaml
