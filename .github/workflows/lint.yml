@@ -21,3 +21,4 @@ jobs:
       with:
         files: .
         config_file: .markdownlint.yml
+        ignore_files: SECURITY.md

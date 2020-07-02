@@ -2,3 +2,4 @@ default: true
 
 MD013: false #https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md#md013
 MD024: false #https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md#md024
+MD026: false #https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md#md026
