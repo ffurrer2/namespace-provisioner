@@ -5,7 +5,7 @@ on:
   push:
     branches:
     - master
-    - feature/disabled
+    - feature/**
     paths-ignore:
     - '**.md'
 
