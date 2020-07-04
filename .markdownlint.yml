@@ -1,5 +1,5 @@
 default: true
 
-MD013: false #https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md#md013
-MD024: false #https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md#md024
-MD026: false #https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md#md026
+MD013: false  # MD013/line-length Line length
+MD024: false  # MD024/no-duplicate-heading/no-duplicate-header Multiple headings with the same content
+MD026: false  # MD026/no-trailing-punctuation Trailing punctuation in heading

@@ -1,0 +1,54 @@
+schemaVersion: 2.0.0
+
+commandTests:
+# check that the namespace-provisioner binary is in the correct location
+- name: 'namespace-provisioner installation'
+  #setup: [['apk', 'add', '--no-cache', 'which']]
+  command: 'test'
+  args: ['-f', '/app/namespace-provisioner']
+  exitCode: 0
+
+fileExistenceTests:
+# check that the namespace-provisioner binary exists and has the correct permissions
+- name: 'namespace-provisioner binary'
+  path: '/app/namespace-provisioner'
+  shouldExist: true
+  permissions: '-rwxr-xr-x'
+  uid: 100
+  gid: 100
+  isExecutableBy: 'any'
+
+metadataTest:
+  labels:
+  - key: 'com.daimler.namespace-provisioner.license'
+    value: 'MIT'
+  - key: 'com.daimler.namespace-provisioner.license-url'
+    value: 'https://github.com/Daimler/namespace-provisioner/blob/master/LICENSE'
+  - key: 'org.opencontainers.image.authors'
+    value: 'Daimler TSS GmbH'
+  - key: 'org.opencontainers.image.created'
+    value: '^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$'
+    isRegex: true
+  - key: 'org.opencontainers.image.description'
+    value: 'A Kubernetes operator creating K8s resources by annotating namespaces.'
+  - key: 'org.opencontainers.image.documentation'
+    value: 'https://github.com/Daimler/namespace-provisioner/blob/master/README.md'
+  - key: 'org.opencontainers.image.licenses'
+    value: 'MIT'
+  - key: 'org.opencontainers.image.revision'
+    value: '^[a-f0-9]{7}$'
+    isRegex: true
+  - key: 'org.opencontainers.image.source'
+    value: 'https://github.com/Daimler/namespace-provisioner.git'
+  - key: 'org.opencontainers.image.title'
+    value: 'Namespace Provisioner'
+  - key: 'org.opencontainers.image.url'
+    value: 'https://github.com/Daimler/namespace-provisioner'
+  - key: 'org.opencontainers.image.vendor'
+    value: 'Daimler TSS GmbH'
+  - key: 'org.opencontainers.image.version'
+    value: '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
+    isRegex: true
+  entrypoint: ['./namespace-provisioner']
+  cmd: []
+  workdir: '/app'
