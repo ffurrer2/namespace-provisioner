@@ -37,7 +37,7 @@ jobs:
     - name: container-structure-test
       uses: docker://gcr.io/gcp-runtimes/container-structure-test:latest
       with:
-        args: 'test --image docker.pkg.github.com/daimler/namespace-provisioner/namespace-provisioner:latest --config config.yml'
+        args: 'test --image "${DOCKER_REGISTRY}/namespace-provisioner:latest" --config config.yml'
 
   local-build:
     name: Local build
