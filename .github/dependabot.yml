@@ -1,0 +1,22 @@
+version: 2
+
+updates:
+- package-ecosystem: 'gomod'
+  directory: '/'
+  schedule:
+    interval: 'daily'
+  rebase-strategy: 'auto'
+  allow:
+  - dependency-type: 'direct'
+
+- package-ecosystem: 'docker'
+  directory: '/'
+  rebase-strategy: 'auto'
+  schedule:
+    interval: 'daily'
+
+- package-ecosystem: 'github-actions'
+  directory: '/'
+  rebase-strategy: 'auto'
+  schedule:
+    interval: 'daily'

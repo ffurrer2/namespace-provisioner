@@ -28,6 +28,8 @@ jobs:
         echo "::set-env name=DOCKER_REGISTRY::$(echo -n 'docker.pkg.github.com/${{ github.repository }}' | tr '[:upper:]' '[:lower:]')"
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Build
       run: |
         task docker:build DOCKER_REGISTRY="${DOCKER_REGISTRY}"
@@ -56,6 +58,8 @@ jobs:
         sudo bash -c 'curl -fsSL https://taskfile.dev/install.sh | bash -s -- -b /usr/local/bin v${{ env.TASK_VERSION }}'
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Clean
       run: |
         task local:clean
@@ -90,6 +94,8 @@ jobs:
         echo "::add-path::$Env:HOMEDRIVE$Env:HOMEPATH\scoop\shims"
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Clean
       shell: bash
       run: |
